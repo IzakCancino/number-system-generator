@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Numeric Systems</title>
+</head>
+
+<body>
+    <nav>
+        <!-- <img src="logo.png" alt="Logo"> -->
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#generator">Generator</a></li>
+            <li><a href="#how">How it works?</a></li>
+            <li><a href="#about-me">About me</a></li>
+        </ul>
+    </nav>
+
+    <section id="home">
+        <h2>Welcome to the...</h2>
+        <h1>Numeric Systems Generator</h1>
+        <h3>Base-N</h3>
+        <p>With any character</p>
+    </section>
+
+    <main id="generator">
+        <form id="numericSystemCreator">
+            <h4>Select the numeric <a href="#how-base">base</a></h4>
+            <input type="number" name="base" id="base" value="2" placeholder="2" required min=1>
+
+            <h4>Insert the digits to use (any character)</h4>
+            <div id="gen-digits">
+                <div data-digit-num="1">
+                    <label for="digit-1">Digit #1</label>
+                    <input type="text" name="digit-1" class="digits" maxlength="1" required value="0">
+                    <button type="button" class="btn-delete-digit">Delete</button>
+                </div>
+
+                <div data-digit-num="2">
+                    <label for="digit-2">Digit #2</label>
+                    <input type="text" name="digit-2" class="digits" maxlength="1" required value="1">
+                    <button type="button" class="btn-delete-digit">Delete</button>
+                </div>
+            </div>
+            <button type="submit">Confirm</button>
+        </form>
+        <div>
+
+        </div>
+    </main>
+    <section id="calculator">
+        <h4>Use your new numeric system</h4>
+    </section>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
