@@ -67,6 +67,10 @@ function deleteBtnClicked(e) {
   inputBase.value = base;
 }
 
+/**
+ * Updates some values in labels, and the arrays `labelsDigits` and `inputsDigits`
+ * @returns {void}
+ */
 function updateDigitsInfo() {
   // Updating the number in the labels of the digits inputs
   labelsDigits = Array.from(document.getElementsByClassName("label-digit"));
@@ -87,6 +91,22 @@ function updateDeleteBtns() {
     btn.removeEventListener("click", deleteBtnClicked);
     btn.addEventListener("click", deleteBtnClicked);
   });
+}
+
+/**
+ * Allows only one character (emojis, letters, numbers or symbols)
+ * @param {PointerEvent} e On change event
+ * @param {HTMLInputElement} input Element that changed
+ * @returns {void}
+ */
+function addDigitInputValidation(e) {
+  digitInput = e.target;
+
+  if (/^[\p{Any}]$/u.test(digitInput.value) || !digitInput.value) {
+    return
+  }
+
+  digitInput.value = digitInput.value[0];
 }
 
 
@@ -125,15 +145,11 @@ inputBase.addEventListener("change", () => {
   updateDeleteBtns();
 
   updateDigitsInfo();
+  inputsDigits[inputsDigits.length - 1].addEventListener("change", addDigitInputValidation);
 });
 
 inputsDigits.forEach(input => {
-  input.addEventListener("change", () => {
-    // Allow only one character (emojis, letters, numbers or symbols)
-    if (!/^[\p{Any}]$/u.test(input.value)) {
-      input.value = input.value[0];
-    }
-  })
+  input.addEventListener("change", addDigitInputValidation)
 })
 
 formNumSys.addEventListener("submit", e => {
