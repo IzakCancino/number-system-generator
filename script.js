@@ -24,9 +24,15 @@ let inputBase = document.getElementById("base");
 
 /**
  * Contains all the labels for digit inputs
- * @type {HTMLButtonElement[]}
+ * @type {HTMLLabelElement[]}
  */
 let labelsDigits = Array.from(document.getElementsByClassName("label-digit"));
+
+/**
+ * Contains all the digit inputs
+ * @type {HTMLInputElement[]}
+ */
+let inputsDigits = Array.from(document.getElementsByClassName("digits"));
 
 /**
  * Contains all the buttons for delete digit inputs
@@ -59,12 +65,17 @@ function deleteBtnClicked(e) {
   btnsDeleteDigit.splice(i, 1);
   base = btnsDeleteDigit.length;
   inputBase.value = base;
+}
 
+function updateDigitsInfo() {
   // Updating the number in the labels of the digits inputs
   labelsDigits = Array.from(document.getElementsByClassName("label-digit"));
   labelsDigits.forEach((label, i) => {
     label.innerText = `Digit #${i + 1}`;
   });
+
+  // Updating the array of digit inputs
+  inputsDigits = Array.from(document.getElementsByClassName("digits"));
 }
 
 /**
@@ -102,7 +113,7 @@ inputBase.addEventListener("change", () => {
       templateGenDigits.innerHTML = `
               <div data-digit-num="${auxNumber}">
                 <label for="digit-${auxNumber}" class="label-digit">Digit #${base}</label>
-                <input type="text" name="digit-${auxNumber}" class="digits" maxlength="1" required>
+                <input type="text" name="digit-${auxNumber}" class="digits" maxlength="2" required>
                 <button type="button" class="btn-delete-digit">Delete</button>
               </div>
               `;
@@ -112,12 +123,25 @@ inputBase.addEventListener("change", () => {
 
   btnsDeleteDigit = Array.from(document.getElementsByClassName("btn-delete-digit"));
   updateDeleteBtns();
+
+  updateDigitsInfo();
 });
+
+inputsDigits.forEach(input => {
+  input.addEventListener("change", () => {
+    // Allow only one character (emojis, letters, numbers or symbols)
+    if (!/^[\p{Any}]$/u.test(input.value)) {
+      input.value = input.value[0];
+    }
+  })
+})
 
 formNumSys.addEventListener("submit", e => {
   e.preventDefault();
 
-  console.log();
+  digits = inputsDigits.map(input => input.value);
+
+  console.log(digits);
 
   // HACER QUE CREE EL SISTEMA
   // divGenDigits.children
