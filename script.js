@@ -53,16 +53,22 @@ let auxNumber = base;
 let digits = [];
 
 /**
- * Decimal number input in the converter
- * @type {HTMLInputElement}
+ * Array with the titles that show the current numeric base
+ * @type {HTMLSpanElement[]}
  */
-let inputNumDecimal = document.getElementById("input-decimal");
+let titleBase = Array.from(document.getElementsByClassName("title-base"));
 
 /**
- * Personalized number input in the converter
- * @type {HTMLInputElement}
+ * Array with the title, label, input, button and result of the calculator from decimal to generated system
+ * @type {HTMLElement[]}
  */
-let inputNumSystem = document.getElementById("input-system");
+let calDecimalToSystem = document.getElementById("cal-dec-to-sys").children;
+
+/**
+ * Array with the title, label, input, button and result of the calculator from generated system to decimal
+ * @type {HTMLElement[]}
+ */
+let calSystemToDecimal = document.getElementById("cal-sys-to-dec").children;
 
 
 
@@ -83,6 +89,8 @@ function deleteBtnClicked(e) {
   btnsDeleteDigit.splice(i, 1);
   base = btnsDeleteDigit.length;
   inputBase.value = base;
+
+  updateDigitsInfo();
 }
 
 /**
@@ -140,6 +148,10 @@ function convertDecimalToSystem(numDecimal) {
     return digits[0];
   }
 
+  if (base == 1) {
+    return digits[0].repeat(numDecimal);
+  }
+
   while (base ** i <= numDecimal) {
     i++;
   }
@@ -153,13 +165,9 @@ function convertDecimalToSystem(numDecimal) {
     }
     j--;
 
-    console.log({ i, j, numDecimal });
-
     result[i] = digits[j];
     numDecimal -= (base ** i) * j;
   }
-
-  console.log(result);
 
   return result.reverse().join("");
 }
@@ -170,6 +178,10 @@ function convertDecimalToSystem(numDecimal) {
  * @returns {String}
  */
 function convertSystemToDecimal(numSystem) {
+  if (base == 1) {
+    return numSystem.match(/[\p{Any}]/ug).length;
+  }
+
   return numSystem
     .split("")
     .reverse()
@@ -201,13 +213,17 @@ inputBase.addEventListener("change", () => {
       templateGenDigits.innerHTML = `
               <div data-digit-num="${auxNumber}">
                 <label for="digit-${auxNumber}" class="label-digit">Digit #${base}</label>
-                <input type="text" name="digit-${auxNumber}" class="digits" maxlength="2" required>
+                <input type="text" name="digit-${auxNumber}" class="digits" id="digit-${auxNumber}" maxlength="2" required>
                 <button type="button" class="btn-delete-digit">Delete</button>
               </div>
               `;
       divGenDigits.append(templateGenDigits);
     }
   }
+
+  titleBase.forEach(element => {
+    element.innerText = base;
+  })
 
   btnsDeleteDigit = Array.from(document.getElementsByClassName("btn-delete-digit"));
   updateDeleteBtns();
@@ -228,12 +244,28 @@ formNumSys.addEventListener("submit", e => {
 });
 
 // Convert decimals numbers to system created numbers
-inputNumDecimal.addEventListener("change", e => {
-  console.log(e);
-  inputNumSystem.value = convertDecimalToSystem(Number(e.target.value));
+calDecimalToSystem["input-decimal"].addEventListener("change", () => {
+  let numDecimal = calDecimalToSystem["input-decimal"].value;
+
+  // Only allow positive integers
+  if (numDecimal < 0 || !/^[0-9]+$/.test(numDecimal)) {
+    calDecimalToSystem["input-decimal"].value = 0;
+    return;
+  }
+
+  calDecimalToSystem["converted-system"].innerText = convertDecimalToSystem(Number(numDecimal));
 });
 
 // Convert system created numbers to decimal numbers
-inputNumSystem.addEventListener("change", e => {
-  inputNumDecimal.value = convertSystemToDecimal(e.target.value);
+calSystemToDecimal["input-system"].addEventListener("change", () => {
+  let re = new RegExp("^[" + digits.join("") + "]+$");
+  let numSystem = calSystemToDecimal["input-system"].value;
+
+  if (!re.test(numSystem)) {
+    calSystemToDecimal["input-system"].value = digits[0];
+    return;
+  }
+
+  calSystemToDecimal["converted-decimal"].innerText = convertSystemToDecimal(numSystem);
 });
+
