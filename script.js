@@ -46,6 +46,24 @@ let btnsDeleteDigit = Array.from(document.getElementsByClassName("btn-delete-dig
  */
 let auxNumber = base;
 
+/**
+ * Array with all the digits of the current numeric system
+ * @type {String[]}
+ */
+let digits = [];
+
+/**
+ * Decimal number input in the converter
+ * @type {HTMLInputElement}
+ */
+let inputNumDecimal = document.getElementById("input-decimal");
+
+/**
+ * Personalized number input in the converter
+ * @type {HTMLInputElement}
+ */
+let inputNumSystem = document.getElementById("input-system");
+
 
 
 /**
@@ -109,6 +127,56 @@ function addDigitInputValidation(e) {
   digitInput.value = digitInput.value[0];
 }
 
+/**
+ * Makes the conversion of a number from decimal to the numeric system created
+ * @param {Number} numSystem Number to convert
+ * @returns {String}
+ */
+function convertDecimalToSystem(numDecimal) {
+  let result = [];
+  let i = 0;
+
+  if (numDecimal == 0) {
+    return digits[0];
+  }
+
+  while (base ** i <= numDecimal) {
+    i++;
+  }
+
+  while (i > 0) {
+    i--;
+
+    let j = 0;
+    while ((base ** i) * j <= numDecimal) {
+      j++;
+    }
+    j--;
+
+    console.log({ i, j, numDecimal });
+
+    result[i] = digits[j];
+    numDecimal -= (base ** i) * j;
+  }
+
+  console.log(result);
+
+  return result.reverse().join("");
+}
+
+/**
+ * Makes the conversion of a number from the numeric system created to decimal
+ * @param {String} numSystem Number to convert
+ * @returns {String}
+ */
+function convertSystemToDecimal(numSystem) {
+  return numSystem
+    .split("")
+    .reverse()
+    .map((digit, i) => base ** i * digits.indexOf(digit))
+    .reduce((a, b) => a + b);
+}
+
 
 
 updateDeleteBtns();
@@ -148,17 +216,24 @@ inputBase.addEventListener("change", () => {
   inputsDigits[inputsDigits.length - 1].addEventListener("change", addDigitInputValidation);
 });
 
+// Adding to digit inputs validation of any character
 inputsDigits.forEach(input => {
   input.addEventListener("change", addDigitInputValidation)
-})
+});
 
+// Generate the array with all the digits
 formNumSys.addEventListener("submit", e => {
   e.preventDefault();
-
   digits = inputsDigits.map(input => input.value);
+});
 
-  console.log(digits);
+// Convert decimals numbers to system created numbers
+inputNumDecimal.addEventListener("change", e => {
+  console.log(e);
+  inputNumSystem.value = convertDecimalToSystem(Number(e.target.value));
+});
 
-  // HACER QUE CREE EL SISTEMA
-  // divGenDigits.children
-})
+// Convert system created numbers to decimal numbers
+inputNumSystem.addEventListener("change", e => {
+  inputNumDecimal.value = convertSystemToDecimal(e.target.value);
+});
