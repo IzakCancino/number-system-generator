@@ -211,11 +211,9 @@ inputBase.addEventListener("change", () => {
 
       let templateGenDigits = document.createElement("div");
       templateGenDigits.innerHTML = `
-              <div data-digit-num="${auxNumber}">
                 <label for="digit-${auxNumber}" class="label-digit">Digit #${base}</label>
                 <input type="text" name="digit-${auxNumber}" class="digits" id="digit-${auxNumber}" maxlength="2" required>
                 <button type="button" class="btn-delete-digit">Delete</button>
-              </div>
               `;
       divGenDigits.append(templateGenDigits);
     }
