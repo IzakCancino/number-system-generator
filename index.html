@@ -4,14 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Numeric Systems</title>
+    <title>Numeric systems generator</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <nav>
         <!-- <img src="logo.png" alt="Logo"> -->
         <ul>
-            <li><a href="#home">Home</a></li>
             <li><a href="#generator">Generator</a></li>
             <li><a href="#how">How it works?</a></li>
             <li><a href="#about-me">About me</a></li>
@@ -23,34 +28,46 @@
         <h1>Numeric Systems Generator</h1>
         <h3>Base-N</h3>
         <p>With any character</p>
+        <p>
+            <span class="random-chars">w</span>
+            <span class="random-chars">x</span>
+            <span class="random-chars">y</span>
+            <span class="random-chars">z</span>
+        </p>
     </section>
 
     <main id="generator">
+        <h2>Generator</h2>
         <form id="numericSystemCreator">
-            <h4>Select the numeric <a href="#how-base">base</a></h4>
+            <h4>Select the numeric <a href="#help-base" class="help">base</a></h4>
             <input type="number" name="base" id="base" value="2" placeholder="2" required min=1>
 
-            <h4>Insert the digits to use (any character)</h4>
+            <h4>Insert the <a href="#help-digits" class="help">digits</a> to use (any character)</h4>
             <div id="gen-digits">
-                <div data-digit-num="1">
-                    <label for="digit-1" class="label-digit">Digit #1</label>
-                    <input type="text" name="digit-1" class="digits" id="digit-1" maxlength="2" required value="0">
-                    <button type="button" class="btn-delete-digit">Delete</button>
+                <div>
+                    <div data-digit-num="1">
+                        <label for="digit-1" class="label-digit">Digit #1</label>
+                        <input type="text" name="digit-1" class="digits" id="digit-1" maxlength="2" required value="0">
+                        <button type="button" class="btn-delete-digit">Delete</button>
+                    </div>
                 </div>
 
-                <div data-digit-num="2">
-                    <label for="digit-2" class="label-digit">Digit #2</label>
-                    <input type="text" name="digit-2" class="digits" id="digit-2" maxlength="2" required value="1">
-                    <button type="button" class="btn-delete-digit">Delete</button>
+                <div>
+                    <div data-digit-num="2">
+                        <label for="digit-2" class="label-digit">Digit #2</label>
+                        <input type="text" name="digit-2" class="digits" id="digit-2" maxlength="2" required value="1">
+                        <button type="button" class="btn-delete-digit">Delete</button>
+                    </div>
                 </div>
             </div>
-            <button type="submit">Generate</button>
+            <button type="submit" id="btn-generate-system">Generate</button>
         </form>
         <div>
 
         </div>
     </main>
     <section id="calculator">
+        <h2>Calculator</h2>
         <h4>Use your new numeric system</h4>
         <div id="cal-dec-to-sys">
             <h5>Decimal system to your <span class="title-base">2</span>-base system</h5>
