@@ -1,4 +1,4 @@
-<h1 align="center" center>Emoji Maze</h1>
+<h1 align="center">Numeric System Generator</h1>
 
 **Create, generate and use your own numeric system with ANY characters.**
 
