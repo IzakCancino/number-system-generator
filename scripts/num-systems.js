@@ -33,10 +33,6 @@ inputBase.addEventListener("change", () => {
     }
   }
 
-  titleBase.forEach(element => {
-    element.innerText = base;
-  })
-
   btnsDeleteDigit = Array.from(document.getElementsByClassName("btn-delete-digit"));
   updateDeleteBtns();
 
@@ -54,10 +50,12 @@ formNumSys.addEventListener("submit", e => {
   e.preventDefault();
   digits = inputsDigits.map(input => input.value);
 
-
-
   if (confirm("Note:\nYou will not be able to modify the actual numeric system (digits or base), at this moment. To do it, you need to click the return button in the calculator section")) {
-    // Show the `Calculator` section and move to it
+    // Prepare and show the `Calculator` section and move to it
+    titleBase.forEach(element => {
+      element.innerText = base;
+    });
+
     sectionCalculator.style.display = "flex";
     toggleInputsOnGenerate(true);
     sectionCalculator.scrollIntoView({ behavior: "smooth" });
