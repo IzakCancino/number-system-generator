@@ -90,28 +90,14 @@ function toggleInputsOnGenerate(state) {
  * @returns {String}
  */
 function convertDecimalToSystem(numDecimal) {
-  let result = [];
-  let i = 0;
-
   if (numDecimal == 0) {
     return digits[0];
   }
 
-  while (base ** i <= numDecimal) {
-    i++;
-  }
-
-  while (i > 0) {
-    i--;
-
-    let j = 0;
-    while ((base ** i) * j <= numDecimal) {
-      j++;
-    }
-    j--;
-
-    result[i] = digits[j];
-    numDecimal -= (base ** i) * j;
+  let result = [];
+  while (numDecimal != 0) {
+    result.push(digits[numDecimal % base]);
+    numDecimal = Math.floor(numDecimal / base);
   }
 
   return result.reverse().join("");
