@@ -55,6 +55,10 @@ a {
     color: white;
 }
 
+.bold {
+    font-weight: bold;
+}
+
 .help {
     cursor: help;
     color: #9cd5f0;

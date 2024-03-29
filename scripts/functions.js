@@ -4,7 +4,7 @@
  * @returns {void}
  */
 function deleteBtnClicked(e) {
-  if (base <= 1) {
+  if (base <= 2) {
     return;
   }
 
@@ -95,10 +95,6 @@ function convertDecimalToSystem(numDecimal) {
 
   if (numDecimal == 0) {
     return digits[0];
-  }
-
-  if (base == 1) {
-    return digits[0].repeat(numDecimal);
   }
 
   while (base ** i <= numDecimal) {

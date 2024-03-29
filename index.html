@@ -34,7 +34,7 @@
         <h2>Generator</h2>
         <form id="numericSystemCreator">
             <h4>Select the numeric <a href="#help-base" class="help">base</a></h4>
-            <input type="number" name="base" id="base" value="2" placeholder="2" required min=1>
+            <input type="number" name="base" id="base" value="2" placeholder="2" required min=2>
 
             <h4>Insert the <a href="#help-digits" class="help">digits</a> to use (any character)</h4>
             <div id="gen-digits">
@@ -81,7 +81,6 @@
     <section id="how">
         <h2>How it works?</h2>
 
-
         <p>Imagine you have a bunch of different symbols, like shapes or pictures. Now, let's say you want to use these symbols to represent how many things you have. That's what a number system is all about - it's like a special language we use to talk about numbers.</p>
 
         <p>Think of the number system like different sets of rules for using these symbols. The most common one we use every day is called the decimal system, which has 10 symbols: 0, 1, 2, 3, 4, 5, 6, 7, 8, and 9. When we count past 9, we add another digit to the left, like going from 9 to 10.</p>
@@ -94,7 +93,8 @@
 
         <p>For example, in the decimal system, which is base 10, we have 10 digits (0 through 9), and each position represents a power of 10. So, in the number 123, the '1' represents 100 (10^2), the '2' represents 20 (10^1), and the '3' represents 3 (10^0).</p>
 
-        <p>Bases can be anything greater than 1, and different bases have different properties that make them useful for different purposes. For instance, binary (base 2) is essential in computer science because it directly relates to how computers store and process information.
+        <p><span class="bold">Bases can be anything greater than 1</span>, and different bases have different properties that make them useful for different purposes. For instance, binary (base 2) is essential in computer science because it directly relates to how computers store and process
+            information.
         </p>
 
         <h3 id="help-digits">Digits</h3>
@@ -204,10 +204,7 @@
         <p>So, the decimal representation of 10110 is 22.</p>
 
         <p>This process can be applied to convert numbers between any two base.</p>
-
-
     </section>
-
 
     <script src="scripts/variables.js"></script>
     <script src="scripts/functions.js"></script>
