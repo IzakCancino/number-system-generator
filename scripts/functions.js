@@ -27,7 +27,7 @@ function updateDigitsInfo() {
   // Updating the number in the labels of the digits inputs
   labelsDigits = Array.from(document.getElementsByClassName("label-digit"));
   labelsDigits.forEach((label, i) => {
-    label.innerText = `Digit #${i + 1}`;
+    label.innerText = `Digit #${i}`;
   });
 
   // Updating the array of digit inputs
