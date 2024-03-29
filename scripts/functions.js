@@ -131,8 +131,7 @@ function convertSystemToDecimal(numSystem) {
     return numSystem.match(/[\p{Any}]/ug).length;
   }
 
-  return numSystem
-    .split("")
+  return Array.from(numSystem)
     .reverse()
     .map((digit, i) => base ** i * digits.indexOf(digit))
     .reduce((a, b) => a + b);
