@@ -1,6 +1,6 @@
-<h1 align="center">Numeric System Generator</h1>
+<h1 align="center">Number System Generator</h1>
 
-**Create, generate and use your own numeric system with ANY characters.**
+**Create, generate and use your own number system with ANY characters.**
 
 <!-- *Pending images...* -->
 
@@ -10,11 +10,11 @@
 
 ## 📌 Characteristics
 
--   **🧬 Generator:** Gives you the ability to select a base (_a positive integer_) for the numeric system, and based on it you can input a character to represent each digit, these can be **ANY** valid Unicode character, like a letter, a number, an emoji, or a special character.
+-   **🧬 Generator:** Gives you the ability to select a base (_a positive integer_) for the number system, and based on it you can input a character to represent each digit, these can be **ANY** valid Unicode character, like a letter, a number, an emoji, or a special character.
 
--   **🧮 Calculator:** Based on the previously generated numeric system, you can make conversions from decimal to your own system, and from your own system to decimal.
+-   **🧮 Calculator:** Based on the previously generated number system, you can make conversions from decimal to your own system, and from your own system to decimal.
 
--   **🧠 How it works?:** There is a section to learn how numeric system works (_bases, digits, conversions, ..._), and a little about how the site code works.
+-   **🧠 How it works?:** There is a section to learn how number system works (_bases, digits, conversions, ..._), and a little about how the site code works.
 
 <!-- ## 💻 Technical characteristics
 

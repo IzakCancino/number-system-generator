@@ -5,7 +5,7 @@
 let sectionGenerator = document.getElementById("generator");
 
 /**
- * Form with all the numeric systems base and digits
+ * Form with the number system info: base and digits
  * @type {HTMLFormElement}
  */
 let formNumSys = document.getElementById("numericSystemCreator");
@@ -59,7 +59,7 @@ let btnGenerateSystem = document.getElementById("btn-generate-system");
 let auxNumber = base;
 
 /**
- * Array with all the digits of the current numeric system
+ * Array with all the digits of the current number system
  * @type {String[]}
  */
 let digits = [];

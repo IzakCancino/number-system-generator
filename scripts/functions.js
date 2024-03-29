@@ -85,7 +85,7 @@ function toggleInputsOnGenerate(state) {
 }
 
 /**
- * Makes the conversion of a number from decimal to the numeric system created
+ * Makes the conversion of a number from decimal to the number system created
  * @param {Number} numSystem Number to convert
  * @returns {String}
  */
@@ -122,7 +122,7 @@ function convertDecimalToSystem(numDecimal) {
 }
 
 /**
- * Makes the conversion of a number from the numeric system created to decimal
+ * Makes the conversion of a number from the number system created to decimal
  * @param {String} numSystem Number to convert
  * @returns {String}
  */
