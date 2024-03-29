@@ -1,4 +1,10 @@
 /**
+ * `Generator` section in the site
+ * @type {HTMLDivElement}
+ */
+let sectionGenerator = document.getElementById("generator");
+
+/**
  * Form with all the numeric systems base and digits
  * @type {HTMLFormElement}
  */
@@ -41,6 +47,12 @@ let inputsDigits = Array.from(document.getElementsByClassName("digits"));
 let btnsDeleteDigit = Array.from(document.getElementsByClassName("btn-delete-digit"));
 
 /**
+ * Button in `Generator` section for generate the system
+ * @type {HTMLButtonElement}
+ */
+let btnGenerateSystem = document.getElementById("btn-generate-system");
+
+/**
  * Number used to count every time the base is added by 1, it doesn't decrease
  * @type {Number}
  */
@@ -57,6 +69,18 @@ let digits = [];
  * @type {HTMLSpanElement[]}
  */
 let titleBase = Array.from(document.getElementsByClassName("title-base"));
+
+/**
+ * `Calculator` section in the site
+ * @type {HTMLDivElement}
+ */
+let sectionCalculator = document.getElementById("calculator");
+
+/**
+ * Button for return from `Calculator` to `Generator` section in the site
+ * @type {HTMLButtonElement}
+ */
+let btnReturnGenerator = document.getElementById("return-generator");
 
 /**
  * Array with the title, label, input, button and result of the calculator from decimal to generated system

@@ -184,6 +184,15 @@ input {
     background-color: #133a1c;
 }
 
+.blocked-input {
+    color: #c2c2c2 !important;
+    background-color: #2b2b2b !important;
+}
+
+.blocked-input:hover {
+    cursor: not-allowed;
+}
+
 /* Calculator section */
 
 #calculator {
@@ -277,6 +286,16 @@ div#nav-calculator button img:hover {
 
 div#nav-calculator button img:active {
     bottom: 5px;
+    filter: invert(0.7);
+}
+
+div#nav-calculator button:disabled {
+    box-shadow: inset #000000b5 3px 3px 3px;
+    background-color: #232323;
+}
+
+div#nav-calculator button:disabled img {
+    bottom: 10px;
     filter: invert(0.7);
 }
 

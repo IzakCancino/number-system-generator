@@ -53,7 +53,29 @@ inputsDigits.forEach(input => {
 formNumSys.addEventListener("submit", e => {
   e.preventDefault();
   digits = inputsDigits.map(input => input.value);
+
+
+
+  if (confirm("Note:\nYou will not be able to modify the actual numeric system (digits or base), at this moment. To do it, you need to click the return button in the calculator section")) {
+    // Show the `Calculator` section and move to it
+    sectionCalculator.style.display = "flex";
+    toggleInputsOnGenerate(true);
+    sectionCalculator.scrollIntoView({ behavior: "smooth" });
+  }
+
 });
+
+// Return to `Generator` section, move to it, and hide the `Calculator` section
+btnReturnGenerator.addEventListener("click", () => {
+  sectionCalculator.style.display = "none";
+  toggleInputsOnGenerate(false);
+  calDecimalToSystem["input-decimal"].value = "";
+  calDecimalToSystem["converted-system"].innerText = "--";
+  calSystemToDecimal["input-system"].value = "";
+  calSystemToDecimal["converted-decimal"].innerText = "--";
+  sectionGenerator.scrollIntoView({ behavior: "smooth" });
+
+})
 
 // Convert decimals numbers to system created numbers
 calDecimalToSystem["input-decimal"].addEventListener("change", () => {

@@ -61,6 +61,29 @@ function addDigitInputValidation(e) {
   digitInput.value = digitInput.value[0];
 }
 
+
+/**
+ * Enables or disable all the inputs and buttons in generator section
+ * @param {Boolean} state `true` enables them / `false` disables them
+ */
+function toggleInputsOnGenerate(state) {
+  inputBase.disabled = state;
+  inputBase.classList.toggle("blocked-input");
+
+  inputsDigits.forEach(input => {
+    input.disabled = state;
+    input.classList.toggle("blocked-input");
+  })
+
+  btnsDeleteDigit.forEach(btn => {
+    btn.disabled = state;
+    btn.classList.toggle("blocked-input");
+  })
+
+  btnGenerateSystem.disabled = state;
+  btnGenerateSystem.classList.toggle("blocked-input");
+}
+
 /**
  * Makes the conversion of a number from decimal to the numeric system created
  * @param {Number} numSystem Number to convert
