@@ -42,7 +42,7 @@ main {
 
 section h2,
 h3,
-h4 {
+#how h4 {
     padding-left: 30px;
 }
 
