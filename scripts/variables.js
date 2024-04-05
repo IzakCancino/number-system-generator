@@ -1,3 +1,7 @@
+//
+// GENERATOR SECTION
+//
+
 /**
  * `Generator` section in the site
  * @type {HTMLDivElement}
@@ -9,12 +13,6 @@ let sectionGenerator = document.getElementById("generator");
  * @type {HTMLFormElement}
  */
 let formNumSys = document.getElementById("numericSystemCreator");
-
-/**
- * The numeric base in use. It has the same value than `inputBase.value`
- * @type {Number}
- */
-let base = 2;
 
 /**
  * Div with all the *digits selectors* in the generator
@@ -53,6 +51,52 @@ let btnsDeleteDigit = Array.from(document.getElementsByClassName("btn-delete-dig
 let btnGenerateSystem = document.getElementById("btn-generate-system");
 
 /**
+ * Sub-section with the preset number systems
+ * @type {HTMLDivElement}
+ */
+let sectionPresets = document.getElementById("presets");
+
+/**
+ * Array with the buttons in `sectionPresets` to load presets number systems
+ * @type {HTMLButtonElement[]}
+ */
+let btnsPresets = Array.from(document.getElementsByClassName("btn-presets"));
+
+/**
+ * Object with the base and digits from the number systems presets: `binary`, `hexadecimal`, and `octal`
+ */
+let presets = {
+  "binary": {
+    base: 2,
+    digits: ["0", "1"]
+  },
+  "hex": {
+    base: 16,
+    digits: ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"]
+  },
+  "octal": {
+    base: 8,
+    digits: ["0", "1", "2", "3", "4", "5", "6", "7"]
+  },
+  "emoji": {
+    base: 10,
+    digits: ["🧙‍♂️", "🐶", "😀", "🎋", "🎈", "🐀", "🎍", "🥪", "✨", "🥳"]
+  }
+};
+
+
+
+//
+// BOTH SECTIONS
+//
+
+/**
+ * The numeric base in use. It has the same value than `inputBase.value`
+ * @type {Number}
+ */
+let base = 2;
+
+/**
  * Number used to count every time the base is added by 1, it doesn't decrease
  * @type {Number}
  */
@@ -63,6 +107,12 @@ let auxNumber = base;
  * @type {String[]}
  */
 let digits = [];
+
+
+
+//
+// CALCULATOR SECTION
+//
 
 /**
  * Array with the titles that show the current numeric base
