@@ -145,11 +145,8 @@ function convertDecimalToSystem(numDecimal) {
  * @returns {String}
  */
 function convertSystemToDecimal(numSystem) {
-  if (base == 1) {
-    return numSystem.match(/[\p{Any}]/ug).length;
-  }
-
-  return Array.from(numSystem)
+  return numSystem
+    .match(regexSplit)
     .reverse()
     .map((digit, i) => base ** i * digits.indexOf(digit))
     .reduce((a, b) => a + b);

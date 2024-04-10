@@ -143,3 +143,15 @@ let calDecimalToSystem = document.getElementById("cal-dec-to-sys").children;
  * @type {HTMLElement[]}
  */
 let calSystemToDecimal = document.getElementById("cal-sys-to-dec").children;
+
+/**
+ * RegEx used to validate the input in `calSystemToDecimal`. It has the form: `/^[DIGITS]+$/`; where `DIGITS` refers to a string with all the digits in the current number system
+ * @type {RegExp}
+ */
+let regexValidation;
+
+/**
+ * RegEx used to convert the value in `calSystemToDecimal`. It has the form: `/DIGIT_A{1}|DIGIT_B{1}|...|DIGIT_N{1}/g`; where `DIGIT_X` refers to each digit
+ * @type {RegExp}
+ */
+let regexSplit;

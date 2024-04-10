@@ -16,13 +16,12 @@ inputBase.addEventListener("change", onInputBaseChange);
 
 // Adding to digit inputs validation of any character
 inputsDigits.forEach(input => {
-  input.addEventListener("change", addDigitInputValidation)
+  input.addEventListener("change", addDigitInputValidation);
 });
 
-// Generate the array with all the digits
+// Detect when the new number system is being generated
 formNumSys.addEventListener("submit", e => {
   e.preventDefault();
-  digits = inputsDigits.map(input => input.value);
 
   if (confirm("Note:\nYou will not be able to modify the actual number system (digits or base), at this moment. To do it, you need to click the return button in the calculator section.")) {
     // Prepare and show the `Calculator` section and move to it
@@ -35,6 +34,10 @@ formNumSys.addEventListener("submit", e => {
     sectionCalculator.style.display = "flex";
     toggleInputsOnGenerate(true);
     sectionCalculator.scrollIntoView({ behavior: "smooth" });
+
+    digits = inputsDigits.map(input => input.value);
+    regexValidation = new RegExp("^[" + digits.join("") + "]+$");
+    regexSplit = new RegExp(digits.join("{1}|") + "{1}", "g");
   }
 });
 
@@ -46,7 +49,8 @@ btnsPresets.forEach(btn => {
     onInputBaseChange();
 
     inputsDigits.forEach((input, i) => {
-      input.value = preset.digits[i]
+      input.value = preset.digits[i];
+      input.addEventListener("change", addDigitInputValidation);
     })
 
     sectionGenerator.scrollIntoView({ behavior: "smooth" });
@@ -89,10 +93,9 @@ calDecimalToSystem["input-decimal"].addEventListener("change", () => {
 
 // Convert system created numbers to decimal numbers
 calSystemToDecimal["input-system"].addEventListener("change", () => {
-  let re = new RegExp("^[" + digits.join("") + "]+$");
   let numSystem = calSystemToDecimal["input-system"].value;
 
-  if (!re.test(numSystem)) {
+  if (!regexValidation.test(numSystem)) {
     calSystemToDecimal["input-system"].value = digits[0];
     return;
   }
